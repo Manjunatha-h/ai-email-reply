@@ -47,6 +47,28 @@ public class EmailGenService {
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
+        //making use of webClient with block is not differable from restClient
+
+        //-----------------------------------------------------------------------------------
+        //restTemplate -> legacy, spring has it in maintainance(so no updation), block calls
+        //webClient -> non-block(asynchronous) reactive(Mono mainatins reactive data return)
+        //restClient -> modern and better replace for restTemplate, block nd non-reactive
+        //------------------------------------------------------------------------------------
+
+
+        // -----------------------------------------------
+        //Request reaches controller
+        //Controller method is invoked
+        //Mono pipeline is created (no API call yet)
+        //Controller returns Mono immediately
+        //Controller execution ends (no further role)
+        //Spring receives the returned Mono
+        //Spring internally subscribes
+        //API call is triggered after subscription
+        //Response arrives
+        //Body is converted to required type (String)
+        //Spring sends response to client
+        //--------------------------------------------------
 
         //extract and return response
 
