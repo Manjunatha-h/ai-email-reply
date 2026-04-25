@@ -2,7 +2,15 @@ spring:
   application:
     name: email-writer-sb
 
-gemini:
+
+  ai:
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+        chat:
+          options:
+            model: gemini-3-flash-preview
   api:
     url: ${GEMINI_API_URL}
     key: ${GEMINI_API_KEY}
+
